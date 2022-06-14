@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { SuspensedView } from '../tools/suspense';
 
 import { Dashboard } from '../pages/Dashboard';
+import UsersPage from '../components/UserManegment';
 
 const PrivateRoutes = () => {
   return (
@@ -19,6 +20,15 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+        <Route
+          path="user-management/*"
+          element={
+            <SuspensedView>
+              <UsersPage />
+            </SuspensedView>
+          }
+        />
+
         {/* Page Not Found */}
         <Route path="*" element={<Navigate to="/error/404" />} />
       </Route>

@@ -8,9 +8,9 @@ import {
 } from 'react-icons/ri';
 import { RiShieldKeyholeFill } from 'react-icons/ri';
 import type { MenuProps } from 'antd';
-import { Layout, Menu } from 'antd';
+import { Menu } from 'antd';
 
-const { Sider } = Layout;
+import { SideBar } from './styles';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -48,13 +48,13 @@ const items: MenuItem[] = [
   getItem('User Manegment', 'sub2', <RiShieldUserFill />, [
     getItem('Users', 'sub2.1', <RiFileUserFill />, [
       getItem(
-        <Link to="/UserManegment/userList">
+        <Link to="/user-management/users">
           <SubItemLabel text="Users List" />
         </Link>,
         'sub2.1.1',
       ),
       getItem(
-        <Link to="/UserManegment/ViewUser">
+        <Link to="/user-management/ViewUser">
           <SubItemLabel text="View User" />{' '}
         </Link>,
         'sub2.1.2',
@@ -62,31 +62,31 @@ const items: MenuItem[] = [
     ]),
     getItem('Roles', 'sub2.2', <RiBriefcase2Line />, [
       getItem(
-        <Link to="/UserManegment/RolesList">
+        <Link to="/user-management/RolesList">
           <SubItemLabel text="Roles List" />
         </Link>,
         'sub2.2.1',
       ),
       getItem(
-        <Link to="/UserManegment/ViewRole">
+        <Link to="user-management/ViewRole">
           <SubItemLabel text="View Role" />
         </Link>,
         'sub2.2.2',
       ),
     ]),
     getItem(
-      <Link to="/UserManegment/Permissions">Permissions</Link>,
+      <Link to="/user-management/Permissions">Permissions</Link>,
       'sub2.3',
       <RiShieldKeyholeFill />,
     ),
   ]),
 ];
 
-const SideBar: React.FC = () => {
+const SideBarComponent: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Sider
+    <SideBar
       collapsible
       collapsed={collapsed}
       onCollapse={value => setCollapsed(value)}
@@ -101,8 +101,8 @@ const SideBar: React.FC = () => {
         mode="inline"
         items={items}
       />
-    </Sider>
+    </SideBar>
   );
 };
 
-export default SideBar;
+export default SideBarComponent;

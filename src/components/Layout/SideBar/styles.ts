@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { Layout } from 'antd';
+
+const { Sider } = Layout;
 
 const darkBlue = '#1a1a27';
 const darkBlue50 = '#1e1e2d';
@@ -6,7 +9,7 @@ const textColor = '#9899ac';
 const iconColor = '#494b74';
 const iconColorHover = '#009ef7';
 
-export const ContainerSideBar = styled.div`
+export const SideBar = styled(Sider)`
   div.logo-container {
     padding: 16px;
     background: ${darkBlue};
@@ -19,7 +22,7 @@ export const ContainerSideBar = styled.div`
     background: rgba(255, 255, 255, 0.3);
   }
 
-  aside,
+  &,
   ul.ant-menu,
   div.ant-layout-sider-trigger,
   ul.ant-menu-dark .ant-menu-inline.ant-menu-sub {
