@@ -1,60 +1,68 @@
-import { Space, Tag } from 'antd';
+import { Space, Tag, List, Avatar } from 'antd';
+import { formatDistanceToNow } from 'date-fns';
 import type { ColumnsType } from 'antd/lib/table';
+import { UserListUser } from './styles';
+import Actions from './Actions';
+import fakeUser from '../../../assets/300-1.jpg';
 
 interface DataType {
   key: string;
   name: string;
-  age: number;
-  address: string;
-  tags: string[];
+  email: string;
+  role: string;
+  lastLogin: string;
+  twoStep: string;
+  joinedDate: string;
 }
 
 export const columns: ColumnsType<DataType> = [
   {
-    title: 'Name',
+    title: 'USER',
     dataIndex: 'name',
     key: 'name',
-    render: text => <a>{text}</a>,
+    width: '300px',
+    render: (value: string, record: DataType) => {
+      return (
+        <UserListUser>
+          <List.Item.Meta
+            avatar={<Avatar src={fakeUser} />}
+            title={<a href="https://ant.design">{value}</a>}
+            description={record.email}
+          />
+        </UserListUser>
+      );
+    },
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'ROLE',
+    key: 'role',
+    dataIndex: 'role',
+    width: '170px',
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'LAST LOGIN',
+    key: 'lastLogin',
+    dataIndex: 'lastLogin',
+    width: '170px',
   },
   {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    title: 'TWO-STEP',
+    key: 'twoStep',
+    dataIndex: 'twoStep',
+    width: '170px',
+    render: value => <Tag color="success">{value}</Tag>,
   },
   {
-    title: 'Action',
+    title: 'JOINED DATE',
+    key: 'joinedDate',
+    dataIndex: 'joinedDate',
+    render: value => <span>{`${value}`}</span>,
+  },
+  {
+    title: 'ACTIONS',
     key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
+    width: '140px',
+    render: (_, record) => <Actions />,
   },
 ];
 
@@ -62,22 +70,100 @@ export const data: DataType[] = [
   {
     key: '1',
     name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
   },
   {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
   },
   {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
+  },
+  {
+    key: '1',
+    name: 'John Brown',
+    email: 'JohnBrown@email.com',
+    role: 'Administrador',
+    lastLogin: formatDistanceToNow(new Date(2014, 6, 2), { addSuffix: false }),
+    twoStep: 'Enabled',
+    joinedDate: new Date().toDateString(),
   },
 ];
